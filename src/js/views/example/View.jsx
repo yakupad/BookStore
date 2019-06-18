@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 
 import LazyLoading from '../../common/components/LazyLoading'
-import { actions as exampleActions } from '../../redux/modules/example'
-import { exampleSelector } from '../../redux/selectors/exampleSelector'
+import { actions as bookActions } from '../../redux/modules/bookModule'
+import { bookSelector } from '../../redux/selectors/bookSelector'
 import { ExampleWithError } from '../../common/components/Example';
 import { ErrorBoundary } from '../../common/components/Utilities';
 
@@ -79,11 +79,11 @@ class ExampleView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  example: exampleSelector(state),
+  example: bookSelector(state),
 })
 
 const mapDispatchToProps = {
-  ...exampleActions,
+  ...bookActions,
 }
 
 export default connect(

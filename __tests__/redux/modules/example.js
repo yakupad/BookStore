@@ -1,4 +1,4 @@
-import { reducers, constants, actions, initialState } from  '../../../src/js/redux/modules/example'
+import { reducers, constants, actions, initialState } from  '../../../src/js/redux/modules/bookModule'
 import { getStore } from '../../../__fixtures__/store'
 
 const fixture = {

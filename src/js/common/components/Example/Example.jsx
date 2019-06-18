@@ -42,7 +42,6 @@ class Example extends PureComponent {
   render() {
     const { example } = this.props;
     const result = (example && example.result) || null;
-
     if (result) {
       return (
         <div className={styles.exampleOutput}>
