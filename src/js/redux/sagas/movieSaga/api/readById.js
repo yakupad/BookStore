@@ -6,34 +6,13 @@ import {
   actions as movieActions,
 } from '../../../modules/movieModule/movieModule'
 import { getMovieById } from '../../../../common/api/index'
-import { movieType } from '../../../../common/types/movieType'
 
 export function* fetchMovieByIdData() {
   const apiCallResponse = yield call(getMovieById, '5d131750f5fefa2250d90b77');
   const { data } = apiCallResponse;
-  const resultArray: Array<movieType> = [];
-
+  const resultArray = [];
   data.forEach((element) => {
-    const result: movieType = {
-      id: element.id,
-      imageUrl: element.imageUrl,
-      description: element.description,
-      typeId: element.typeId,
-      productionYear: element.productionYear,
-      imdbScore: element.imdbScore,
-      director: element.director,
-      actor: element.actor,
-      tag: element.tag,
-      videoLink: element.videoLink,
-      thumbnailLink: element.thumbnailLink,
-      createDate: new Date(),
-      updatedDate: new Date(),
-      isActive: element.isActive,
-      createdUser: element.createdUser,
-      updatedUser: element.updatedUser,
-      watchCount: element.watchCount,
-    }
-    resultArray.push(result);
+    resultArray.push(element);
   });
 
   yield put(movieActions.updateMovieById(resultArray))

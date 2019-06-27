@@ -33,8 +33,9 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
-    const { getMovieById } = this.props;
+    const { getMovieById, getCreateMovie } = this.props;
     getMovieById()
+    getCreateMovie()
   }
 
   handleChange = (event) => {
