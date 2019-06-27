@@ -1,31 +1,34 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-
+import {
+  Navbar, Nav, NavDropdown, Form, FormControl, Button,
+} from 'react-bootstrap';
 import styles from './Header.css';
 
 class Header extends PureComponent {
   render() {
-    const { location } = this.props;
-    const { pathname } = location;
-
-    const isHome = pathname === '/';
-    const isJustAnotherPage = pathname === '/page';
-
     return (
-      <header className={styles.globalHeader}>
-        <ul>
-          <li className={!isHome ? styles.active : ''}>
-            {isHome ? 'Home' : <Link to="/">Home</Link>}
-          </li>
-          <li className={!isJustAnotherPage ? styles.active : ''}>
-            {isJustAnotherPage ? (
-              'Just Another Page'
-            ) : (
-              <Link to="/page">Just Another Page</Link>
-            )}
-          </li>
-        </ul>
-      </header>
+      <Navbar bg="light" expand="lg" fixed="top">
+        <Navbar.Brand href="#home">Yazılım Filmleri</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#/">Home</Nav.Link>
+            <Nav.Link href="#page">Just Another Page</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Form inline>
+            <Button variant="outline-success">Üye Ol</Button>
+            <Button variant="outline-success">Giriş Yap</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

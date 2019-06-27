@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import bookModule from './modules/bookModule'
+import movieModule from './modules/movieModule/movieModule'
 
 export default combineReducers({
-  bookModule,
+  movieModule,
 })

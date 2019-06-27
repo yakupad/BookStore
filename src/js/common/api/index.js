@@ -1,8 +1,3 @@
 export {
-  getTopTenAvengers,
-} from './module/example'
-
-export {
-  getBooksByBarcode,
-  getBooksByAuthor,
-} from './module/book'
+  getMovieById,
+} from './module/movie'

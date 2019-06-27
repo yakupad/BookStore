@@ -1,9 +1,6 @@
 import axios from '../../../../../node_modules/axios'
 
-const requestMapPath = 'api/books'
-
-export const getRequester = (endpoint, parameter) => {
-  const requestUrl = `${__CONFIG__.apiBaseUrl}/${requestMapPath}/${endpoint}/${parameter}`
+export const getRequester = (requestUrl) => {
   return axios({
     method: 'get',
     url: requestUrl,
@@ -11,6 +8,22 @@ export const getRequester = (endpoint, parameter) => {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
+    auth: {
+      username: __CONFIG__.apiAuthUserName,
+      password: __CONFIG__.apiAuthPassword,
+    },
+  })
+}
+
+export const postRequester = (requestUrl, requestData) => {
+  return axios({
+    method: 'post',
+    url: requestUrl,
+    withCredentials: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    data: requestData,
     auth: {
       username: __CONFIG__.apiAuthUserName,
       password: __CONFIG__.apiAuthPassword,

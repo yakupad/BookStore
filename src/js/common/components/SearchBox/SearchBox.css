@@ -1,0 +1,8 @@
+.dropdownButton button{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.inputGroup {
+    margin: 10px;
+}

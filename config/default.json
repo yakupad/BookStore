@@ -1,7 +1,7 @@
 {
   "env": "default",
   "host": "0.0.0.0",
-  "port": "8076",
+  "port": "8071",
   "publicPath": "/",
   "assetPath": "assets",
   "jsSourcePath": "src/js",
@@ -25,8 +25,8 @@
   ],
   "app": {
     "description": "config inside 'app' will be injected to your frontend code automatically",
-    "apiBaseUrl": "https://bookstorespringapi.herokuapp.com",
-    "apiAuthUserName": "admin",
+    "apiBaseUrl": "http://localhost:8080",
+    "apiAuthUserName": "yakupad",
     "apiAuthPassword": "welcome1"
   }
 }

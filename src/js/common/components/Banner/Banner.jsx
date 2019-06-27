@@ -1,20 +1,70 @@
 import React, { PureComponent } from 'react';
-import { Row } from 'react-bootstrap';
-import Carousel from 'nuka-carousel';
+import { Row, Carousel } from 'react-bootstrap';
 
 class Banner extends PureComponent {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleSelect = this.handleSelect.bind(this);
+
+    this.state = {
+      index: 0,
+      direction: null,
+    };
+  }
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction,
+    });
+  }
+
   render() {
+    const { index, direction } = this.state;
+
     return (
-      <Row>
-        <Carousel>
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1" alt="image1" />
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide2" alt="image2" />
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide3" alt="image3" />
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide4" alt="image4" />
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide5" alt="image5" />
-          <img src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide6" alt="image6" />
-        </Carousel>
-      </Row>
+      <Carousel
+        activeIndex={index}
+        direction={direction}
+        onSelect={this.handleSelect}
+      >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            alt="Third slide"
+          />
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            alt="Third slide"
+          />
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
     );
   }
 }

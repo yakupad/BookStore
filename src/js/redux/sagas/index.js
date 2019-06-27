@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
-import { bookSaga } from './bookSaga';
+import { movieSaga } from './movieSaga/movieSaga';
 
 export default function* sagas() {
-  yield all([...bookSaga]);
+  yield all([...movieSaga]);
 }
