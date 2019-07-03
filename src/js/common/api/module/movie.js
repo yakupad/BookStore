@@ -28,7 +28,12 @@ export const getMovieByProductionYear = (productionYear) => {
 }
 
 export const getAllMovies = () => {
-  const requestUrl = `${__CONFIG__.apiBaseUrl}/${requestMapPath}/read`
+  const requestUrl = `${__CONFIG__.apiBaseUrl}/${requestMapPath}/read/all`
+  return getRequester(requestUrl);
+}
+
+export const getAllSortedMovies = (sortDirection, sortType) => {
+  const requestUrl = `${__CONFIG__.apiBaseUrl}/${requestMapPath}/read/all/sort?sortDirection=${sortDirection}&sortType=${sortType}`
   return getRequester(requestUrl);
 }
 
@@ -41,8 +46,3 @@ export const deleteMovie = (movieId) => {
   const requestUrl = `${__CONFIG__.apiBaseUrl}/${requestMapPath}/delete/${movieId}`
   return getRequester(requestUrl);
 }
-
-// const data = {
-//     firstName: 'Fred',
-//     lastName: 'Flintstone',
-//   }

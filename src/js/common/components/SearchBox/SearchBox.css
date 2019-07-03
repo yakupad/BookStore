@@ -1,8 +1,78 @@
-.dropdownButton button{
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+.searchBox{
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.inputGroup {
-    margin: 10px;
-}
+.container {
+    position: relative;
+    width: 100%
+  }
+  .input {
+    width: 100%;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    -webkit-appearance: none;
+  }
+  .input::-ms-clear {
+    display: none;
+  }
+  .inputOpen {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .inputFocused {
+    outline: none;
+  }
+  .suggestionsContainer {
+    display: none;
+  }
+  .suggestionsContainerOpen {
+    display: block;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 2;
+  }
+  .suggestionsList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+  }
+  .suggestionFirst {
+    border-top: 0;
+  }
+  .suggestionHighlighted {
+    background-color: #0C7EAF;
+    color: #fff;
+  }
+  .suggestionContent {
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat;
+  }
+  .name {
+    margin-left: 68px;
+    line-height: 45px;
+  }
+  .highlight {
+    color: #ee0000 !important;
+    font-weight: 400;
+  }
+  .suggestionHighlighted .highlight {
+    color: #120000;
+  }
+  

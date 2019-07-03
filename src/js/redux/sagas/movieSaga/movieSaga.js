@@ -4,5 +4,12 @@ import {
 
 import { watchGetMovieById } from './api/readById'
 import { watchCreateMovie } from './api/create'
+import { watchGetMovie } from './api/read'
+import { watchGetMovieSorted } from './api/readSorted'
 
-export const movieSaga = [fork(watchGetMovieById), fork(watchCreateMovie)]
+export const movieSaga = [
+  fork(watchGetMovieById),
+  fork(watchCreateMovie),
+  fork(watchGetMovie),
+  fork(watchGetMovieSorted),
+]

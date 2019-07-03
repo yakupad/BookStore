@@ -1,5 +1,14 @@
 .footer {
-    height: 100px;
     width: 100%;
-    background-color: gray;
+    background-color: rgba(0,0,0,.03);
+    margin-left: unset;
+    margin-right: unset;
+    padding: 20px;
+}
+
+.leftImage {
+    padding: 20px;
+    height: 200px;
+    width: 200px;
+    float: right
 }

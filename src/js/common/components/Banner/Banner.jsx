@@ -32,7 +32,7 @@ class Banner extends PureComponent {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            src="https://www.eyecinema.ie/thumb.php?src=/images/films/robin-hood-backdrop-74.jpg&w=765&h=350&zc=1"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -43,7 +43,7 @@ class Banner extends PureComponent {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            src="https://frpnet.net/wp-content/uploads/2013/07/wolverine-film-banner.jpg"
             alt="Third slide"
           />
           <Carousel.Caption>
@@ -54,7 +54,7 @@ class Banner extends PureComponent {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="http://placehold.it/1000x200/ffffff/c0392b/&text=slide1"
+            src="https://www.themarysue.com/wp-content/uploads/2011/12/the-avengers-2012-20111214115951598-1.jpeg"
             alt="Third slide"
           />
           <Carousel.Caption>

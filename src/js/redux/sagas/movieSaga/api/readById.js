@@ -7,8 +7,8 @@ import {
 } from '../../../modules/movieModule/movieModule'
 import { getMovieById } from '../../../../common/api/index'
 
-export function* fetchMovieByIdData() {
-  const apiCallResponse = yield call(getMovieById, '5d131750f5fefa2250d90b77');
+export function* fetchMovieByIdData(action) {
+  const apiCallResponse = yield call(getMovieById, action.payload.value);
   const { data } = apiCallResponse;
   const resultArray = [];
   data.forEach((element) => {

@@ -1,55 +1,112 @@
 import React, { PureComponent } from 'react';
-import {
-  InputGroup, FormControl, Button, DropdownButton, Dropdown, ButtonToolbar, Row,
-} from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match'
+import parse from 'autosuggest-highlight/parse'
 import styles from './SearchBox.css';
 
 class SearchBox extends PureComponent {
-    state = {
-      dropdownButtonTitle: 'Select Search Type',
+  constructor() {
+    super();
+
+    this.state = {
+      value: '',
+      suggestions: [],
+    }
+  }
+
+    onChange = (event, { newValue, method }) => {
+      this.setState({
+        value: newValue,
+      });
+    };
+
+    onSuggestionSelected = () => {
+      console.log('selected')
+      window.location.href = '#/detail/5d1ae96debd31c4f6d352554'
     }
 
-    handleDropdownItem = (itemName) => {
+    onSuggestionsFetchRequested = ({ value }) => {
       this.setState({
-        dropdownButtonTitle: itemName,
-      })
+        suggestions: this.getSuggestions(value),
+      });
+    };
+
+    onSuggestionsClearRequested = () => {
+      this.setState({
+        suggestions: [],
+      });
+    };
+
+    getSuggestions(value) {
+      const escapedValue = this.escapeRegexCharacters(value.trim());
+
+      if (escapedValue === '') {
+        return [];
+      }
+
+      const regex = new RegExp(`\\b${escapedValue}`, 'i');
+
+      const { values } = this.props;
+      const allMovies = (values && values.resultMovie) || null
+
+      return allMovies.filter((movie) => regex.test(this.getSuggestionValue(movie)));
+    }
+
+    getSuggestionValue = (suggestion) => {
+      return `${suggestion.name} ${suggestion.productionYear}`;
+    }
+
+    escapeRegexCharacters = (str) => {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    renderSuggestion = (suggestion, { query }) => {
+      const suggestionText = `${suggestion.name} ${suggestion.productionYear}`;
+      const matches = match(suggestionText, query);
+      const parts = parse(suggestionText, matches);
+
+      const suggestionImage = {
+        backgroundImage: `url(${suggestion.imageUrl})`,
+        backgroundSize: 'contain',
+      }
+
+      return (
+        <span className={styles.suggestionContent} style={suggestionImage}>
+          <span className={styles.name}>
+            {
+              parts.map((part, index) => {
+                const className = part.highlight ? styles.highlight : null;
+
+                return (
+                  <span className={className} key={index}>{part.text}</span>
+                );
+              })
+            }
+          </span>
+        </span>
+      );
     }
 
     render() {
-      const { searchBoxItems, onChanged } = this.props;
-      const { dropdownButtonTitle } = this.state;
-
-      const dropdownItems = searchBoxItems.map((itemName, index) => (
-        <Dropdown.Item onClick={() => this.handleDropdownItem(itemName)} key={`dropdown-item${index + 1}`} eventKey={index}>{itemName}</Dropdown.Item>
-      ))
-
+      const { value, suggestions } = this.state;
+      const inputProps = {
+        placeholder: 'Search Movie',
+        value,
+        onChange: this.onChange,
+      };
       return (
-        <Row>
-          <InputGroup className={styles.inputGroup}>
-
-            <ButtonToolbar>
-              <DropdownButton
-                drop="down"
-                variant="secondary"
-                title={dropdownButtonTitle}
-                id="dropdown-button-search-type"
-                className={styles.dropdownButton}
-              >
-                {dropdownItems}
-                {/* <Dropdown.Divider /> */}
-              </DropdownButton>
-            </ButtonToolbar>
-            <FormControl
-              placeholder="Please search keyword..."
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-              type="text"
-              onChange={onChanged}
-            />
-            <InputGroup.Append>
-              <Button variant="outline-secondary">Search</Button>
-            </InputGroup.Append>
-          </InputGroup>
+        <Row className={styles.searchBox}>
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            onSuggestionSelected={this.onSuggestionSelected}
+            getSuggestionValue={this.getSuggestionValue}
+            renderSuggestion={this.renderSuggestion}
+            inputProps={inputProps}
+            theme={styles}
+          />
         </Row>
       )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 
-import { Example } from  '../../../src/js/common/components/Example'
+import { Example } from  '../../../src/js/common/components/'
 
 const fixture = {
   example: {

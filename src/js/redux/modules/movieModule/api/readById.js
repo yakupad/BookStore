@@ -4,9 +4,9 @@ export const GET_MOVIE_BY_ID = 'app/movie/GET_MOVIE_BY_ID'
 export const UPDATE_MOVIE_BY_ID = 'app/movie/UPDATE_MOVIE_BY_ID'
 
 export const getMovieById = createAction(
-  GET_MOVIE_BY_ID, () => ({})
+  GET_MOVIE_BY_ID, (value) => ({ value })
 )
 export const updateMovieById = createAction(
   UPDATE_MOVIE_BY_ID,
-  (resultMovieById) => ({ resultMovieById })
+  (resultMovieById) => ({ resultMovieById }),
 )
