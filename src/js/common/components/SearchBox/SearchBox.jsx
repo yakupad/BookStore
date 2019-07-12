@@ -21,9 +21,8 @@ class SearchBox extends PureComponent {
       });
     };
 
-    onSuggestionSelected = () => {
-      console.log('selected')
-      window.location.href = '#/detail/5d1ae96debd31c4f6d352554'
+    onSuggestionSelected = (event, { suggestion }) => {
+      window.location.href = `#/detail/${suggestion.id}`
     }
 
     onSuggestionsFetchRequested = ({ value }) => {

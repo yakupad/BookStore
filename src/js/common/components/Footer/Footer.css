@@ -4,6 +4,9 @@
     margin-left: unset;
     margin-right: unset;
     padding: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 .leftImage {

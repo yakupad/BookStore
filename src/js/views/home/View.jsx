@@ -6,6 +6,7 @@ import {
 import LazyLoading from '../../common/components/LazyLoading'
 import { Banner } from '../../common/components/Banner';
 import { actions as movieActions } from '../../redux/modules/movieModule/movieModule'
+import { actions as userActions } from '../../redux/modules/userModule/userModule'
 import { movieSelector } from '../../redux/selectors/movieSelector'
 import { SearchBox } from '../../common/components/SearchBox'
 import { LeftTab } from '../../common/components/LeftTab'
@@ -45,7 +46,7 @@ class HomeView extends Component {
           <Banner />
           <SearchBox {...this.props} />
           <LeftTab {...this.props} />
-         {/* <LazyCardBox {...this.props} click={() => this.handleClickMethod('ahhahahahahahhahhah')} /> */}
+          {/* <LazyCardBox {...this.props} click={() => this.handleClickMethod('ahhahahahahahhahhah')} /> */}
           <Footer />
         </Container>
       </Fragment>
@@ -59,6 +60,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   ...movieActions,
+  ...userActions,
 }
 
 export default connect(

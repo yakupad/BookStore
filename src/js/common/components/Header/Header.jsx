@@ -4,9 +4,21 @@ import {
   Navbar, Nav, NavDropdown, Form, FormControl, Button,
 } from 'react-bootstrap';
 import styles from './Header.css';
+import { AuthBox } from '../AuthBox'
 
 class Header extends PureComponent {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      authBoxShow: false,
+      boxType: 0,
+    }
+  }
+
   render() {
+    const authBoxClose = () => this.setState({ authBoxShow: false });
     return (
       <Navbar bg="light" expand="lg" fixed="top">
         <Navbar.Brand href="#home">Yazılım Filmleri</Navbar.Brand>
@@ -24,8 +36,9 @@ class Header extends PureComponent {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <Button variant="outline-success">Üye Ol</Button>
-            <Button variant="outline-success">Giriş Yap</Button>
+            <AuthBox show={this.state.authBoxShow} onHide={authBoxClose} boxtype={this.state.boxType}/>
+            <Button variant="outline-success" onClick={() => this.setState({ authBoxShow: true, boxType: 0 })}>Üye Ol</Button>
+            <Button variant="outline-success" onClick={() => this.setState({ authBoxShow: true, boxType: 1 })}>Giriş Yap</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

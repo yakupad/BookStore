@@ -34,5 +34,5 @@ export function* fetchMovieCreateData() {
 }
 
 export function* watchCreateMovie() {
-  yield takeLatest(movieConstants.GET_MOVIE_CREATE, fetchMovieCreateData)
+  yield takeLatest(movieConstants.MOVIE_CREATE, fetchMovieCreateData)
 }

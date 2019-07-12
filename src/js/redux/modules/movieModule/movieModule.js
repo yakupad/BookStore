@@ -3,24 +3,24 @@ import { Map } from 'immutable'
 
 import {
   getMovieById, updateMovieById, GET_MOVIE_BY_ID, UPDATE_MOVIE_BY_ID,
-} from './api/readById';
+} from './actions/readById';
 import {
   getMovieByType, updateMovieByType, GET_MOVIE_BY_TYPE, UPDATE_MOVIE_BY_TYPE,
-} from './api/readByType';
+} from './actions/readByType';
 import {
-  getCreateMovie, updateCreateMovie, GET_MOVIE_CREATE, UPDATE_MOVIE_CREATE,
-} from './api/create';
+  getCreateMovie, updateCreateMovie, MOVIE_CREATE, UPDATE_MOVIE_CREATE,
+} from './actions/create';
 import {
   getMovies, updateMovies, GET_MOVIE, UPDATE_MOVIE,
-} from './api/read';
+} from './actions/read';
 import {
   getMoviesSorted, updateMoviesSorted, GET_MOVIE_SORTED, UPDATE_MOVIE_SORTED,
-} from './api/readSorted';
+} from './actions/readSorted';
 
 export const constants = {
   GET_MOVIE_BY_ID,
   UPDATE_MOVIE_BY_ID,
-  GET_MOVIE_CREATE,
+  MOVIE_CREATE,
   UPDATE_MOVIE_CREATE,
   GET_MOVIE,
   UPDATE_MOVIE,

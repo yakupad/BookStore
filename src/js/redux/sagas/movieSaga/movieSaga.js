@@ -2,10 +2,10 @@ import {
   fork,
 } from 'redux-saga/effects'
 
-import { watchGetMovieById } from './api/readById'
-import { watchCreateMovie } from './api/create'
-import { watchGetMovie } from './api/read'
-import { watchGetMovieSorted } from './api/readSorted'
+import { watchGetMovieById } from './watchers/readById'
+import { watchCreateMovie } from './watchers/create'
+import { watchGetMovie } from './watchers/read'
+import { watchGetMovieSorted } from './watchers/readSorted'
 
 export const movieSaga = [
   fork(watchGetMovieById),

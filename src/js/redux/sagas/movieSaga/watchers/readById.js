@@ -11,10 +11,7 @@ export function* fetchMovieByIdData(action) {
   const apiCallResponse = yield call(getMovieById, action.payload.value);
   const { data } = apiCallResponse;
   const resultArray = [];
-  data.forEach((element) => {
-    resultArray.push(element);
-  });
-
+  resultArray.push(data);
   yield put(movieActions.updateMovieById(resultArray))
 }
 
